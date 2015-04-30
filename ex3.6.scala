@@ -3,17 +3,16 @@ object Exercise3_6 extends App {
     def helper(acc: List[A], as: List[A]): List[A] = {
       as match {
         case Nil => acc
-        case h::t => match t {
-                      
+        case h::t => t match {
+                       case Nil => acc.reverse
+                       case _::tt => helper(h::acc, t)
                      }
       }
     }
-    ls match {
-      case Nil => Nil
-      case h::t => if (f(h)) dropWhile(f, t) else ls
-    }
+
+    helper(List(), ls)
   }
 
   val ls = List(5,4,3,2,1)
-  println(dropWhile( (x:Int) => if (x > 3) true else false, ls).mkString(","))
+  println(init(ls).mkString(","))
 }
