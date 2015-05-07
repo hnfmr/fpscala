@@ -14,6 +14,13 @@ object Exercise4_4 extends App {
     if (a == Nil) None
     else helper(a, Some(List[A]()))
   }
+  
+  def sequence_1[A](a: List[Option[A]]): Option[List[A]] = {
+    a match {
+      case Nil => Some(Nil)
+      case h :: t => h flatMap (hh => sequence(t) map (hh :: _))
+    }
+  }
 
   val b = List(None, Some(10), Some(11), Some(9))
   val bs = sequence(b)
