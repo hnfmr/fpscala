@@ -29,6 +29,7 @@ sealed trait Either[+E, +A] {
       bb <- b
     } yield f(aa, bb)
   }
+
 }
 
 case class Left[+E](value: E) extends Either[E, Nothing]
